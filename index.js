@@ -67,7 +67,7 @@ const processInvoice = () => {
 
   // 4. Display the results on the page.
   // Format and display customer details.
-  const customerDetails = `${customerName}, ${streetAddress}\n${city}, ${province} ${postalCode}\n${phone}`;
+  const customerDetails = `${customerName}\n ${streetAddress}\n${city}, ${province} ${postalCode}\n${phone}`;
   $("customerDetailsOutput").textContent = customerDetails;
 
   // Display property size.
