@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Generate a customer invoice for Mo's Lawncare Services, including costs for mowing, border trimming, and fertilizer treatment."
+    />
+    <title>Mo’s Lawncare Services</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Mo's Lawncare Services - Customer Invoice</h1>
+      </header>
+      <section class="input-section">
+        <h2>Enter Customer and Property Details</h2>
+        <form id="invoiceForm" onsubmit="return false;">
+          <div class="form-group">
+            <label for="customerName">Customer Name:</label>
+            <input type="text" id="customerName" required />
+          </div>
+          <div class="form-group">
+            <label for="streetAddress">Street Address:</label>
+            <input type="text" id="streetAddress" required />
+          </div>
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" required />
+          </div>
+          <div class="form-group">
+            <label for="province">Province:</label>
+            <select id="province" required>
+              <option value="">--Select--</option>
+              <option value="AB">Alberta</option>
+              <option value="BC">British Columbia</option>
+              <option value="MB">Manitoba</option>
+              <option value="NB">New Brunswick</option>
+              <option value="NL">Newfoundland and Labrador</option>
+              <option value="NS">Nova Scotia</option>
+              <option value="ON">Ontario</option>
+              <option value="PE">Prince Edward Island</option>
+              <option value="QC">Quebec</option>
+              <option value="SK">Saskatchewan</option>
+              <option value="NT">Northwest Territories</option>
+              <option value="NU">Nunavut</option>
+              <option value="YT">Yukon</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="postalCode">Postal Code:</label>
+            <input
+              type="text"
+              id="postalCode"
+              placeholder="A1A 1A1"
+              maxlength="7"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input
+              type="tel"
+              id="phone"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              placeholder="999-999-9999"
+              required
+              maxlength="12"
+            />
+          </div>
+          <div class="form-group">
+            <label for="sqft">Property Size (sq ft):</label>
+            <input
+              type="number"
+              id="sqft"
+              min="1"
+              placeholder="#####"
+              required
+            />
+          </div>
+          <div class="button-group">
+            <button type="button" id="calculateBtn">Generate Invoice</button>
+            <button type="reset" id="clearBtn">Clear Form</button>
+          </div>
+        </form>
+      </section>
+
+      <article id="invoice-output" class="output-section">
+        <h2>Invoice Details</h2>
+        <div id="customerDetailsOutput"></div>
+        <p class="property-size-display">
+          Property size (sq ft):
+          <span id="propertySizeOut"></span>
+        </p>
+
+        <h3>Cost Breakdown:</h3>
+        <table id="invoiceTable">
+          <tbody>
+            <tr>
+              <td>Border Cost</td>
+              <td id="borderCostOut"></td>
+            </tr>
+            <tr>
+              <td>Mowing Cost</td>
+              <td id="mowingCostOut"></td>
+            </tr>
+            <tr>
+              <td>Fertilizer Cost</td>
+              <td id="fertilizerCostOut"></td>
+            </tr>
+            <tr class="total-row">
+              <th>Total Charges</th>
+              <th id="totalChargesOut"></th>
+            </tr>
+            <tr>
+              <td>Sales Tax (HST)</td>
+              <td id="hstOut"></td>
+            </tr>
+            <tr>
+              <td>Environmental Tax</td>
+              <td id="envTaxOut"></td>
+            </tr>
+            <tr class="total-row">
+              <th>Invoice Total</th>
+              <th id="invoiceTotalOut"></th>
+            </tr>
+          </tbody>
+        </table>
+        <button type="button" id="printBtn">Print Receipt</button>
+      </article>
+
+      <script src="index.js"></script>
+
+      <footer>
+        <p>
+          <span>&copy; 2025</span>
+          <span>Mo's Lawncare Services</span>
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

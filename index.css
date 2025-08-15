@@ -1,0 +1,222 @@
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+main {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+}
+h1,
+h2,
+h3 {
+  text-align: center;
+  color: #000000;
+}
+h3 {
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+.input-section,
+.output-section {
+  margin-bottom: 20px;
+}
+.form-group {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.form-group label {
+  display: inline-block;
+  width: 160px;
+  font-weight: bold;
+}
+.form-group input,
+.form-group select {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.button-group {
+  display: flex;
+  gap: 10px;
+  /* Align with the input fields by matching the label width */
+  margin-left: 160px;
+  margin-top: 20px;
+}
+.button-group button {
+  flex: 1; /* Make buttons share space equally */
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+#calculateBtn {
+  background-color: #4caf50;
+}
+#calculateBtn:hover {
+  background-color: #45a049;
+}
+#clearBtn {
+  background-color: #6c757d; /* A neutral gray */
+}
+#clearBtn:hover {
+  background-color: #5a6268;
+}
+#printBtn {
+  display: block;
+  width: 100%;
+  margin-top: 25px;
+  padding: 10px 20px;
+  background-color: #007bff; /* A standard blue for print/action */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+#printBtn:hover {
+  background-color: #0056b3;
+}
+#invoice-output {
+  display: none; /* Hidden by default */
+  padding-top: 20px;
+  border-top: 2px solid #4caf50;
+}
+#customerDetailsOutput {
+  white-space: pre-line;
+  margin-bottom: 15px;
+  background-color: #eef;
+  padding: 10px;
+  border-radius: 4px;
+}
+.property-size-display {
+  font-weight: bold;
+  margin: 20px 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+.property-size-display span {
+  font-weight: normal;
+  font-family: monospace, sans-serif;
+}
+#invoiceTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+#invoiceTable th,
+#invoiceTable td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+/* By default, header cells (like "Total Charges") are left-aligned */
+#invoiceTable th {
+  text-align: left;
+}
+/* Values (the last cell in any row) are right-aligned with a monospace font */
+#invoiceTable td:last-child,
+#invoiceTable th:last-child {
+  text-align: right;
+  font-family: monospace, sans-serif;
+}
+.total-row th,
+.total-row td {
+  font-weight: bold;
+  border-top: 2px solid #333;
+}
+
+footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  font-size: 0.9em;
+  color: #666;
+}
+footer p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+/* --- Print-specific styles for 80mm receipt --- */
+@media print {
+  /* Hide all elements on the page by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Make only the invoice article and its children visible */
+  #invoice-output,
+  #invoice-output * {
+    visibility: visible;
+  }
+
+  /* Position the invoice at the top-left of the print page */
+  #invoice-output {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 5mm; /* Add some padding inside the receipt */
+    width: 70mm; /* 80mm paper width minus padding */
+    border: none;
+  }
+
+  /* General receipt text styling */
+  body {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+    color: #000;
+    background-color: #fff;
+  }
+
+  /* Hide elements not needed on the receipt itself */
+  #printBtn {
+    display: none;
+  }
+
+  /* Style receipt headers */
+  h1,
+  h2,
+  h3 {
+    text-align: center;
+    color: #000;
+    margin: 5px 0;
+    padding: 0;
+    border: none;
+    font-size: 12pt;
+  }
+
+  /* Style customer details block */
+  #customerDetailsOutput {
+    background-color: transparent;
+    padding: 0;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .property-size-display {
+    text-align: center;
+    margin: 5px 0;
+    font-weight: normal;
+  }
+
+  /* Style the invoice table for a 2-column layout */
+  #invoiceTable th,
+  #invoiceTable td {
+    padding: 2px 0;
+    border-bottom: 1px dashed #000; /* Dashed line for separation */
+  }
+}
